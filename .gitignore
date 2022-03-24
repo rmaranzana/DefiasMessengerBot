@@ -1,0 +1,6 @@
+.vscode
+build
+defiasmessengerbot.egg-info
+dist
+__pycache__
+

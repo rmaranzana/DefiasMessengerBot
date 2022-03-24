@@ -1,0 +1,2 @@
+from defiasmessengerbot import run
+
