@@ -54,14 +54,22 @@ def on_activate_print_wi(bot):
     t = threading.Thread(target=fun_2)
     t.start()
 
+def add_env_variables(env_variable):
+    # Get token and channel ID from env variables.
+    if os.environ.get(env_variable) is not None:
+        return os.environ[env_variable]
+    else:
+        raise Exception(f"Variable de entorno {env_variable} no definida.")
+
+
 def run_defiasmessengerbot():
 
     with open(get_data_path(), "rb") as f:
         data = pickle.load(f)
 
-    # Get token and channel ID from env variables.
-    token = os.environ['DEFIASMESSENGERBOT_TOKEN']
-    channel_id = os.environ['DEFIASMESSENGERBOT_CHANNELID']
+    # Get env variables:
+    token = add_env_variables('DEFIASMESSENGERBOT_TOKEN')
+    channel_id = int(add_env_variables('DEFIASMESSENGERBOT_CHANNELID'))
 
     # Get configs from pickle file
     path = data["path"]
