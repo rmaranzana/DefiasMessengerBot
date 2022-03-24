@@ -3,4 +3,5 @@ build
 defiasmessengerbot.egg-info
 dist
 __pycache__
+*.pickle
 
