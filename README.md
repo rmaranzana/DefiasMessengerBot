@@ -12,24 +12,29 @@ A Discord Bot with read/post and channel visualization permissions.
 1) Download the [latest release of DefiasMessengerBot](https://github.com/rmaranzana/DefiasMessengerBot/releases/latest).
 2) Open a command prompt and do a pip install of the .whl file.
 3) Configure the DefiasMessengerBot running the command:
-``python -m defiasmessengerbot.config``
+```shell script
+python -m defiasmessengerbot.config`
+```
 And follow the instructions.
-4) Add these two environment variables:
-
-``DEFIASMESSENGERBOT_CHANNELID=<Discord Channel ID>``
-``DEFIASMESSENGERBOT_TOKEN=<Discord Bot Token>``
-
+4) Add two environment variables:
+```shell script
+export DEFIASMESSENGERBOT_CHANNELID=<Discord Channel ID>
+export DEFIASMESSENGERBOT_TOKEN=<Discord Bot Token>
+```
 Replace <Discord Channel ID> with the Channel ID to which your Bot will post, and the <Discord Bot Token> with the key from the Discord Developer Portal.
 
 ## Testing
 Run the following line on a command prompt:
-``python -m defiasmessengerbot.test``
-
+```shell script
+python -m defiasmessengerbot.test
+```
 You will be able to test both screenshot hotkeys.
 
 ## Execution
 Run the following command:
-``python -m defiasmessengerbot.run``
+```shell script
+python -m defiasmessengerbot.run
+```
 
 If everything has been set up properly, the DefiasMessengerBot should now be able to connect to your Discord Bot.
 
