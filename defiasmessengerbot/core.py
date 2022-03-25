@@ -35,7 +35,7 @@ def flash_UI_and_send(bot, special_hotkeys, screenshot_key):
     read_and_send_images(bot)
 
 def on_activate_print_wo(bot, special_hotkeys, timing):
-    MSG = "Envío SIN UI"
+    MSG = "Sent WITHOUT UI"
 
     click.echo(MSG)
 
@@ -45,7 +45,7 @@ def on_activate_print_wo(bot, special_hotkeys, timing):
     t.start()
 
 def on_activate_print_wi(bot):
-    MSG = "Envío CON UI"
+    MSG = "Sent WITH UI"
 
     click.echo(MSG)
 
@@ -59,7 +59,7 @@ def add_env_variables(env_variable):
     if os.environ.get(env_variable) is not None:
         return os.environ[env_variable]
     else:
-        raise Exception(f"Variable de entorno {env_variable} no definida.")
+        raise Exception(f"Environment variable {env_variable} not defined.")
 
 
 def run_defiasmessengerbot():
@@ -89,9 +89,9 @@ def run_defiasmessengerbot():
     # Start Bot
 
     ## Prompt messages:
-    MSG_INIT = "Iniciando..."
-    MSG_SEND_WO = f"Enviar Screenshot SIN UI al BOT: {send_screen_wo_str}"
-    MSG_SEND_WI = f"Enviar Screenshot CON UI al BOT: {send_screen_wi_str}"
+    MSG_INIT = "Warming up..."
+    MSG_SEND_WO = f"Send Screenshot WITHOUT UI to DISCORD BOT: {send_screen_wo_str}"
+    MSG_SEND_WI = f"Send Screenshot WHITH UI to DISCORD BOT: {send_screen_wi_str}"
 
     click.echo(MSG_INIT)
     click.echo(MSG_SEND_WO)

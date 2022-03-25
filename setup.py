@@ -3,14 +3,14 @@ from pip._internal.req import parse_requirements
 
 VERSION = '2.0.0' 
 DESCRIPTION = 'DefiasMessengerBot'
-LONG_DESCRIPTION = 'El DefiasMessengerBot es un Bot que envía el último print screen a un canal de Discord.'
+LONG_DESCRIPTION = 'DefiasMessengerBot is a Python module for World of Warcraft that let you post your in-game screenshots on a Discord Channel.'
 
 # Setting up
 setup(
         name="defiasmessengerbot", 
         version=VERSION,
         author="Rodrigo Maranzana",
-        author_email="maranzana.roddrigo@gmail.com",
+        author_email="maranzana.rodrigo@gmail.com",
         description=DESCRIPTION,
         long_description=LONG_DESCRIPTION,
         packages=find_packages(),

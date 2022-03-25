@@ -60,28 +60,28 @@ def create_config_file(wow_path, screenshot_key, special_hotkeys, username,
             click.echo(create_success_msg(screenshot_key, special_hotkeys))
             
     except:
-        raise Exception("Falló la creación del archivo de configuración.")
+        raise Exception("Error creating config file.")
 
 def create_screenshot_message_wo(screenshot_key):
-    MSG = f"sacar Screenshot sin UI usando el Bot (NO DEBE contener {convert_keylist2str(screenshot_key)})"
+    MSG = f"take a Screenshot without UI using DefiasMessengerBot (CANNOT CONTAIN {convert_keylist2str(screenshot_key)})"
 
     return MSG
 
 def create_screenshot_message_wi(screenshot_key):
-    MSG = f"sacar Screenshot con UI usando el Bot (más de una tecla, DEBE contener {convert_keylist2str(screenshot_key)})"
+    MSG = f"take a Screenshot with UI using DefiasMessengerBot (more than one key, MUST CONTAIN {convert_keylist2str(screenshot_key)})"
 
     return MSG
 
 def input_n_complete():
     # Messages, WoW
-    MSG_TITLE_WOW = "** CONFIGURACIÓN DE WORLD OF WARCRAFT **"
-    MSG_WOW_PATH = "Ingresar el directorio donde WoW guarda Screenshots"
-    MSG_SCREENSHOT = "sacar Screenshot setteada en el WoW"
-    MSG_UI = "activar y desactivar la UI dentro del WoW"
+    MSG_TITLE_WOW = "** SETTINGS - WORLD OF WARCRAFT **"
+    MSG_WOW_PATH = "Enter the path where the Screenshots are saved in the WoW directory."
+    MSG_SCREENSHOT = "take a Screenshot within the game"
+    MSG_UI = "toggle the UI within WoW"
 
     # Mesages, Discord
-    MSG_TITLE_DISCORD = "** CONFIGURACIÓN DE DISCORD **"
-    MSG_USER = "Ingresar username para identificar quién envía la foto en Discord"
+    MSG_TITLE_DISCORD = "** SETTINGS - DISCORD **"
+    MSG_USER = "Enter your username to identify who's sending the picture to Discord."
 
     # Inputs:
 
