@@ -4,16 +4,17 @@ from defiasmessengerbot.key_utils import convert_keylist2str
 import click
 
 def yn_request():
-    MSG = "Confirm? (y/n):"
-    
-    return click.prompt(MSG)
+
+    MSG = "Confirm?"
+
+    return click.confirm(MSG)
 
 def request_input(accion):
 
-    MSG = f"Enter hotkeys to {accion}"
+    MSG = f"Enter hotkeys for {accion}"
 
-    response = None
-    while response != "y":
+    response = False
+    while response != True:
         # Wait for imput
         time.sleep(0.3)
 
@@ -28,11 +29,11 @@ def request_input(accion):
 
 def request_input_wo(accion, screenshot):
 
-    MSG = f"Enter hotkeys to {accion}"
+    MSG = f"Enter hotkeys for {accion}"
     MSG_ERROR = f"Repeat; hotkeys {convert_keylist2str(screenshot)} CANNOT be contained in the current combination."
 
-    response = None
-    while response != "y":
+    response = False
+    while response != True:
         # Wait for imput
         time.sleep(0.3)
 
@@ -53,13 +54,13 @@ def request_input_wo(accion, screenshot):
 
 def request_input_wi(accion, screenshot, check_keys={None}):
 
-    MSG = f"Enter hotkeys to {accion}"
+    MSG = f"Enter hotkeys for {accion}"
     MSG_ERROR_0 = f"Repeat; cannot set {convert_keylist2str(screenshot)} as unique key, provide a combination."
     MSG_ERROR_A = f"Repeat; the key combination {convert_keylist2str(screenshot)} MUST CONTAIN the actual combination."
     MSG_ERROR_B = f"Repeat; the key combination {convert_keylist2str(check_keys)} CANNOT CONTAIN the actual combination."
 
-    response = None
-    while response != "y":
+    response = False
+    while response != True:
         # Wait for imput
         time.sleep(0.3)
 

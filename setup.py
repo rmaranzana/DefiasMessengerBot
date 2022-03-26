@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from pip._internal.req import parse_requirements
 
-VERSION = '2.0.0' 
+VERSION = '1.0.0' 
 DESCRIPTION = 'DefiasMessengerBot'
 LONG_DESCRIPTION = 'DefiasMessengerBot is a Python module for World of Warcraft that let you post your in-game screenshots on a Discord Channel.'
 

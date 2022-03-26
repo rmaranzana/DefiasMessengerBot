@@ -89,13 +89,17 @@ def run_defiasmessengerbot():
     # Start Bot
 
     ## Prompt messages:
+    MSG_TITLE = "Welcome! I'm te Defias Messenger Bot."
     MSG_INIT = "Warming up..."
-    MSG_SEND_WO = f"Send Screenshot WITHOUT UI to DISCORD BOT: {send_screen_wo_str}"
-    MSG_SEND_WI = f"Send Screenshot WHITH UI to DISCORD BOT: {send_screen_wi_str}"
-
+    MSG_READY = \
+    f"""
+    - Press {send_screen_wo_str} to send a screenshot WITHOUT UI.
+    - Press {send_screen_wi_str} to send a screenshot WHITH UI.
+    """
+    click.echo()
+    click.secho(MSG_TITLE, fg="red", bold=True)
     click.echo(MSG_INIT)
-    click.echo(MSG_SEND_WO)
-    click.echo(MSG_SEND_WI)
+    click.echo(MSG_READY)
 
     ## Listener:
     with keyboard.GlobalHotKeys({

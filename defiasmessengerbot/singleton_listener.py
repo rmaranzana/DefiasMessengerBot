@@ -26,7 +26,7 @@ class Singleton:
         self.keys = []
     
     def show_keys(self):
-        MSG = f"La tecla/combinación ingresada es: {convert_keylist2str(self.keys)}"
+        MSG = f"Hotkeys pressed: {convert_keylist2str(self.keys)}"
 
         # Print keys joined by "+":
         click.echo(MSG)

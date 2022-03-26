@@ -22,24 +22,25 @@ def get_dict_struct(path, screenshot_key, special_hotkeys, username, sk_key_wo, 
 
 def create_success_msg(screenshot_key, special_hotkeys):
 
-    msg = \
+    TITLE = "Config file .pickle successfully created!"
+    PRE_CONFIG = \
     f"""
-    ******************** Archivo de configuración .pickle creado ***********************
-    *                                                                                  *
-    * - IMPORTANTE: En el juego WoW hay que settear el botón de Screenshot como:       *
-    *   {convert_keylist2str(screenshot_key)},                                         *
-    *   Además, settear el botón ocultar/mostrar UI como:                              *
-    *   {convert_keylist2str(special_hotkeys)}                                         *
-    *                                                                                  *
-    * - IMPORTANTE: Algunas combinaciones de telcas están reservadas y no funcionan.   *
-    *   Primero ejecutar el test del Bot para asegurarse que las combinaciones elegidas*
-    *   funcionan con el comando:                                                      *
-    *        python -m defiasmessengerbot.test                                         *
-    *                                                                                  *
-    ************************************************************************************
+    IMPORTANT:
+    Before using DefiasMessengerBot, you have to set up the same Keybindings within World of Warcraft:
+
+    - Shorcut Keys for taking a screenshot: {convert_keylist2str(screenshot_key)},
+    - Shorcut Keys for toggling UI: {convert_keylist2str(special_hotkeys)}
+
+    IMPORTANT:
+    Some Hotkeys are reserved by the OS. Make sure your key combinations work properly running the command:
+    python -m defiasmessengerbot.test
+
+    For further information, please refer to the docs.
     """
 
-    return msg
+    click.secho(TITLE, fg="green", bold=True)
+    click.secho("-" * len(TITLE), fg='green', bold=True)
+    click.secho(PRE_CONFIG, fg="green")
 
 def create_config_file(wow_path, screenshot_key, special_hotkeys, username, 
     sk_key_wo, sk_key_wi):
@@ -57,27 +58,27 @@ def create_config_file(wow_path, screenshot_key, special_hotkeys, username,
         with open(mod_path, 'wb') as handle:
             pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-            click.echo(create_success_msg(screenshot_key, special_hotkeys))
+            create_success_msg(screenshot_key, special_hotkeys)
             
     except:
         raise Exception("Error creating config file.")
 
 def create_screenshot_message_wo(screenshot_key):
-    MSG = f"take a Screenshot without UI using DefiasMessengerBot (CANNOT CONTAIN {convert_keylist2str(screenshot_key)})"
+    MSG = f"taking a Screenshot without UI using DefiasMessengerBot (CANNOT CONTAIN {convert_keylist2str(screenshot_key)})"
 
     return MSG
 
 def create_screenshot_message_wi(screenshot_key):
-    MSG = f"take a Screenshot with UI using DefiasMessengerBot (more than one key, MUST CONTAIN {convert_keylist2str(screenshot_key)})"
+    MSG = f"taking a Screenshot with UI using DefiasMessengerBot (more than one key, MUST CONTAIN {convert_keylist2str(screenshot_key)})"
 
     return MSG
 
 def input_n_complete():
     # Messages, WoW
     MSG_TITLE_WOW = "** SETTINGS - WORLD OF WARCRAFT **"
-    MSG_WOW_PATH = "Enter the path where the Screenshots are saved in the WoW directory."
-    MSG_SCREENSHOT = "take a Screenshot within the game"
-    MSG_UI = "toggle the UI within WoW"
+    MSG_WOW_PATH = "Enter the path where the screenshots are being saved in the WoW directory."
+    MSG_SCREENSHOT = "taking a Screenshot within the game"
+    MSG_UI = "toggling the UI within WoW"
 
     # Mesages, Discord
     MSG_TITLE_DISCORD = "** SETTINGS - DISCORD **"
@@ -86,7 +87,7 @@ def input_n_complete():
     # Inputs:
 
     ## WoW
-    click.echo(MSG_TITLE_WOW)
+    click.secho(MSG_TITLE_WOW, fg="red", bold=True)
     click.echo()
     wow_path = click.prompt(MSG_WOW_PATH, type=str)
     click.echo()
@@ -102,7 +103,7 @@ def input_n_complete():
     click.echo()
 
     ## Discord
-    click.echo(MSG_TITLE_DISCORD)
+    click.secho(MSG_TITLE_DISCORD, fg="red", bold=True)
     click.echo()
     username = click.prompt(MSG_USER)
     click.echo()
