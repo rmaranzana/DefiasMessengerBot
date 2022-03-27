@@ -22,17 +22,17 @@ def get_dict_struct(path, screenshot_key, special_hotkeys, username, sk_key_wo, 
 
 def create_success_msg(screenshot_key, special_hotkeys):
 
-    TITLE = "Config file .pickle successfully created!"
+    TITLE = "Config file .pickle created successfully!"
     PRE_CONFIG = \
     f"""
     IMPORTANT:
-    Before using DefiasMessengerBot, you have to set up the same Keybindings within World of Warcraft:
+    Before using DefiasMessengerBot, you have to set up the same Keybindings in World of Warcraft:
 
     - Shorcut Keys for taking a screenshot: {convert_keylist2str(screenshot_key)},
     - Shorcut Keys for toggling UI: {convert_keylist2str(special_hotkeys)}
 
     IMPORTANT:
-    Some Hotkeys are reserved by the OS. Make sure your key combinations work properly running the command:
+    Some Hotkeys are reserved by the OS. Make sure your key combinations work properly by running the command:
     python -m defiasmessengerbot.test
 
     For further information, please refer to the docs.
@@ -75,17 +75,20 @@ def create_screenshot_message_wi(screenshot_key):
 
 def input_n_complete():
     # Messages, WoW
-    MSG_TITLE_WOW = "** SETTINGS - WORLD OF WARCRAFT **"
-    MSG_WOW_PATH = "Enter the path where the screenshots are being saved in the WoW directory."
-    MSG_SCREENSHOT = "taking a Screenshot within the game"
-    MSG_UI = "toggling the UI within WoW"
+    MSG_TITLE = "DefiasMessengerBot CONFIG ROUTINE"
+    MSG_TITLE_WOW = "1/2) Settings - World of Warcraft"
+    MSG_WOW_PATH = "Enter the path where the screenshots are being saved in the WoW directory"
+    MSG_SCREENSHOT = "taking a Screenshot in the game"
+    MSG_UI = "toggling the UI in WoW"
 
     # Mesages, Discord
-    MSG_TITLE_DISCORD = "** SETTINGS - DISCORD **"
-    MSG_USER = "Enter your username to identify who's sending the picture to Discord."
+    MSG_TITLE_DISCORD = "2/2) Settings - Discord **"
+    MSG_USER = "Enter your username to identify who's sending the picture to Discord"
 
     # Inputs:
 
+    click.secho(MSG_TITLE, fg='red', bold=True)
+    click.secho("-" * len(MSG_TITLE), fg='red', bold=True)
     ## WoW
     click.secho(MSG_TITLE_WOW, fg="red", bold=True)
     click.echo()

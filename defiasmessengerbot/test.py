@@ -1,31 +1,40 @@
 
-from venv import create
 from pynput import keyboard
 import pickle
 import warnings
 from defiasmessengerbot.config import get_data_path
+from defiasmessengerbot.key_utils import get_timestamp
 import click
 warnings.filterwarnings("ignore")
 
 def create_intro_message(send_screen_wo_str, send_screen_wi_str):
-    intro_message = \
-    f"""** TEST de Hotkeys del DefiasMessengerBot **
+    TITLE = "DefiasMessengerBot TEST"
     
-    Presionar las siguientes combinaciones de teclas para probar su funcionamiento:
-        - Enviar Screenshot SIN UI al BOT: ", {send_screen_wo_str}
-        - Enviar Screenshot CON UI al BOT: ", {send_screen_wi_str}
-        - Salir del test: <esc>
+    INSTRUCTIONS = \
+    f"""
+    Press the following hotkeys to test them:
+        - Send screenshot WITHOUT UI: {send_screen_wo_str}
+        - Send Screenshot WITH UI: {send_screen_wi_str}
+        - Exit Test: <esc>
+
+    If any issue arise, repeat the config routine.
     """
-    return intro_message
+    click.secho(TITLE, fg="red", bold=True)
+    click.secho("-" * len(TITLE), fg='red', bold=True)
+    click.echo(INSTRUCTIONS)
+
 
 def on_activate_print_wo():
-    click.echo("Envío SIN User Interface")
+    MSG = f"{get_timestamp()} - Sent WITHOUT UI"
+
+    click.echo(MSG)
 
 def on_activate_print_wi():
-    click.echo("Envío CON User Interface")
+    MSG = f"{get_timestamp()} - Sent WITH UI"
+
+    click.echo(MSG)
 
 def on_activate_exit():
-    click.echo("Test finalizado")
     exit()
 
 def run_defiasmessengerbot_test():
@@ -39,10 +48,7 @@ def run_defiasmessengerbot_test():
     send_screen_wi_str = data["sk_key_wi"]
 
     # Define messages:
-    test_intro = create_intro_message(send_screen_wo_str, send_screen_wi_str)
-
-    # Start Bot
-    click.echo(test_intro)
+    create_intro_message(send_screen_wo_str, send_screen_wi_str)
 
     with keyboard.GlobalHotKeys({
             send_screen_wo_str: on_activate_print_wo,

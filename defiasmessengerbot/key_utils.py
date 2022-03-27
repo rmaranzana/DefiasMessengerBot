@@ -1,4 +1,5 @@
 from pynput import keyboard
+import datetime
 
 def check_key(i):
     key_str = str(i)
@@ -13,3 +14,6 @@ def press_and_release_key(hotkeys):
 
     [kb.press(i) for i in hotkeys]
     [kb.release(i) for i in hotkeys]
+
+def get_timestamp():
+    return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

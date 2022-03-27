@@ -4,7 +4,7 @@ import time
 import pickle
 import warnings
 import threading
-from defiasmessengerbot.key_utils import press_and_release_key
+from defiasmessengerbot.key_utils import press_and_release_key, get_timestamp
 from defiasmessengerbot.discordbot import DiscordBot
 from defiasmessengerbot.images_utils import search_for_new_image
 from defiasmessengerbot.config import get_data_path
@@ -35,7 +35,7 @@ def flash_UI_and_send(bot, special_hotkeys, screenshot_key):
     read_and_send_images(bot)
 
 def on_activate_print_wo(bot, special_hotkeys, timing):
-    MSG = "Sent WITHOUT UI"
+    MSG = f"{get_timestamp()} - Sent WITHOUT UI"
 
     click.echo(MSG)
 
@@ -45,7 +45,7 @@ def on_activate_print_wo(bot, special_hotkeys, timing):
     t.start()
 
 def on_activate_print_wi(bot):
-    MSG = "Sent WITH UI"
+    MSG = f"{get_timestamp()} - Sent WITH UI"
 
     click.echo(MSG)
 
@@ -53,6 +53,9 @@ def on_activate_print_wi(bot):
     fun_2 = lambda: read_and_send_images(bot) 
     t = threading.Thread(target=fun_2)
     t.start()
+
+def on_activate_exit_core():
+    exit()
 
 def add_env_variables(env_variable):
     # Get token and channel ID from env variables.
@@ -89,22 +92,24 @@ def run_defiasmessengerbot():
     # Start Bot
 
     ## Prompt messages:
-    MSG_TITLE = "Welcome! I'm te Defias Messenger Bot."
+    MSG_TITLE = "Welcome! I'm the DefiasMessengerBot."
     MSG_INIT = "Warming up..."
     MSG_READY = \
     f"""
     - Press {send_screen_wo_str} to send a screenshot WITHOUT UI.
     - Press {send_screen_wi_str} to send a screenshot WHITH UI.
+    - Press <esc> to exit DefiasMessengerBot.
     """
     click.echo()
     click.secho(MSG_TITLE, fg="red", bold=True)
-    click.echo(MSG_INIT)
     click.echo(MSG_READY)
+    click.echo(MSG_INIT)
 
     ## Listener:
     with keyboard.GlobalHotKeys({
             send_screen_wo_str: on_press_wo,
-            send_screen_wi_str: on_press_wi
+            send_screen_wi_str: on_press_wi,
+            "<esc>": on_activate_exit_core
             }) as listener:
         bot.client.run(token)
         listener.join()
