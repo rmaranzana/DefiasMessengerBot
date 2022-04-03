@@ -16,6 +16,7 @@ A Discord Bot with read/post and channel visualization permissions.
 python -m defiasmessengerbot.config
 ```
 And follow the instructions.
+
 4) Add two environment variables:
 ```shell script
 export DEFIASMESSENGERBOT_CHANNELID=<Discord Channel ID>
